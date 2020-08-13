@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="сontent">
+  <form method="post">
+    {% csrf_token %}
+    <center><h1> Обратная связь </h1>
+    {% if not User.username %}
+      <p>Как к вам обращаться</p>
+      <input type="text" name="name">
+      <p>Введите ваш email:</p>
+      <input type="text" name="email">
+    {% endif %}
+    <p>Напишите нам!</p>
+    <textarea name="feed"></textarea>
+    <input class="submit_comment_button" type="submit" value="Send"></center>
+
+    {% if Success %}
+      <div class="success">
+        {{ Success }}
+      </div>
+    {% endif %}
+
+  </form>
+</div>
+{% endblock %}

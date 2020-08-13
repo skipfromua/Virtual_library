@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+      <div class="content">
+        <div class="author_name_surname">
+          <h2> {{ Author.name }} {{ Author.surname }} </h2>
+        </div>
+        <div class="certain_author">
+            <div class="author_photo">
+              <img height="320px" width="200px" src="{{ Author.photo.url }}">
+            </div>
+            <div class="author_bio">
+              <h4> Биография: </h4>
+              <p>
+                {{ Author.bio }}
+              </p>
+            </div>
+        </div>
+      </div>
+{% endblock %}

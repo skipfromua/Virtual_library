@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="content">
+  <div class="authors_stack">
+    <h1> Список авторов, книги которых присутствуют на сайте:</h1>
+    {% for author in Authors %}
+    <div class="authors">
+      <a href="/authors/{{ author.id }}">
+        <img height="320px" width="200px" src="{{ author.photo.url }}">
+        <center><p> {{ author.name }} {{ author.surname }}</p> </center>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <link rel="stylesheet" href="{% static 'CSS/normalize.css' %}">
+  <link rel="stylesheet" href="{% static 'CSS/style.css' %}">
+</head>
+<body>
+  <header>
+    <div class="header">
+      <div class="container">
+        <div class="header_content-inner">
+          <img class="header_logo" src="{% static 'CSS/logo.png' %}" href="index.html">
+          <nav class="menu">
+            <ul>
+              <li><a href="{% url 'library:main' %}">Главная</a></li>
+              <li><a href="{% url 'library:books' %}">Библиотека</a></li>
+              <li><a href="{% url 'library:authors' %}">Авторы</a></li>
+              <li><a href="{% url 'library:feedback' %}">Обратная связь</a></li>
+              {% if User.username %}
+                <li><a href="{% url 'authorization:logout' %}">Выход</a></li>
+              {% else %}
+                <li><a href="{% url 'authorization:login' %}">Вход</a></li>
+                <li><a href="{% url 'registration:registration' %}">Регистрация</a></li>
+              {% endif %}</ul>
+        </div>
+      </div>
+    </div>
+  </header>
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+    </div>
+</body>
+</html>

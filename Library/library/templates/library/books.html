@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="filter_content">
+        <div class="filter">
+          <form method="get">
+            <ul>
+              <li><p>Язык программирования:</p></li>
+              <li><input type="checkbox" name="technology" value="Python">Python</li>
+              <li><input type="checkbox" name="technology" value="Java">Java</li>
+              <li><input type="checkbox" name="technology" value="C++">C++</li>
+              <li><input type="checkbox" name="technology" value="JS">JavaScript  </li>
+              <li><input type="checkbox" name="technology" value="Others">Остальные  </li>
+              <li><p>Сложность:</p></li>
+              <li><input type="checkbox" name="difficulty" value="L">Для новичков</li>
+              <li><input type="checkbox" name="difficulty" value="M">Для опытных</li>
+              <li><input type="checkbox" name="difficulty" value="H">Для профессионалов</li>
+              <li><p>Язык:</p></li>
+              <li><input type="checkbox" name="language" value="RU">Русский</li>
+              <li><input type="checkbox" name="language" value="EN">Английский</li>
+              <li class="submit_button"><input type="submit" name="submit" value="Применить"></li>
+            </ul>
+          </form>
+        </div>
+        <div class="content">
+          <center><h1> Список книг:</h1></center>
+          <div class="stack">
+            {% for book in Books %}
+            <div class="book">
+              <a href="/books/{{ book.id }}">
+                <img height="320px" width="200px" src="{{ book.poster.url }}">
+                <center><p> {{ book.title }}</p> </center>
+              </a>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+{% endblock %}

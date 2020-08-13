@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+      <div class="content">
+        <div class="book_title">
+          <h2> {{ Book.title }} </h2>
+        </div>
+        <div class="certain_book">
+            <div class="book_image">
+              <img height="320px" width="200px" src="{{ Book.poster.url }}">
+            </div>
+            <div class="book_content">
+              <h4> Содержание: </h4>
+              <p>
+                {{ Book.content }}
+              </p>
+            </div>
+            <div class="book_author">
+              <h3> Автор: </h3>
+              <p>{{ Book.author.name }} {{ Book.author.surname }}</p>
+            </div>
+            <div class="download_book">
+              <h4><a href=""> Download here</a></h4>
+            </div>
+        </div>
+
+        <div class="comments">
+          <h2> Комментарии </h2>
+            {% if Comments %}
+                {% for comment in Comments %}
+                    <p><b>{{ comment.user_name.username }}:</b> {{ comment.pub_date }} </p>
+                    <div class=pub_date><p> {{ comment.comment_body}} </p></div>
+                {% endfor %}
+            {% else %}
+                <p>Прокомментируйте книгу первым.</p>
+            {% endif %}
+          {% if User.username %}
+              <form method="post">
+                  {% csrf_token %}
+                <center><h3>Оставьте комментарий</h3></center>
+                <textarea name=comment maxlength="255"></textarea>
+                <center><input class="submit_comment_button" type="submit" value="Send"></center>
+              </form>
+          {% else %}
+            <center><h3>Авторизируйтесь, чтоб у вас была возможность оставить комментарий</h3></center>
+          {% endif %}
+        </div>
+      </div>
+{% endblock %}
