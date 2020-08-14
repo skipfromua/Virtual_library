@@ -6,6 +6,7 @@ def logout_view(request):
     logout(request)
     return redirect('library:main')
 
+
 def login_view(request):
     if request.method == 'POST':
         message, context = authenticate_and_login_user(request)

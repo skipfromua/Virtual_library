@@ -34,11 +34,14 @@ def get_user_book_and_form_context(request, book_id):
         _post_new_comment(request, book_id)
     user = get_user(request)
     certain_book = get_object_or_404(Book, pk=book_id)
+    book_file = certain_book.main_file.url
+    print(book_file)
     comments = Comment.objects.filter(book_id=book_id)
     context = {
         'Book': certain_book,
         'User': user,
         'Comments': comments,
+        'Download': book_file,
     }
     return context
 
