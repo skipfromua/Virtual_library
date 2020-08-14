@@ -19,7 +19,7 @@
               <p>{{ Book.author.name }} {{ Book.author.surname }}</p>
             </div>
             <div class="download_book">
-              <h4><a href="{{ Download }}" download="{{ Download }}"> Download here</a></h4>
+              <h4><a href="{{ Book.main_file.url }}" download="{{ Book.title }}"> Download here</a></h4>
             </div>
         </div>
 
